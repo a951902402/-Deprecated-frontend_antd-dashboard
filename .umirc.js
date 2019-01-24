@@ -1,17 +1,38 @@
 export default {
   plugins: [
-	['umi-plugin-react', {
-		//need config
-	}],
+    ['umi-plugin-react', {
+      antd: true,
+      dva: true
+    }],
   ],
-  routes: [
-    {
-      path: '/helloworld',
-      component: './helloworld',
-    },
-	{
-	  path: '/',
-	  component: './index',
-	},
-  ],
+  routes: [{
+    path: '/',
+    component: '../layout',
+    routes: [
+      {
+        path: '/card',
+        component: 'Card'
+      },
+      {
+        path: '/',
+        component: 'HelloWorld'
+      },
+      {
+        path: '/helloworld',
+        component: 'HelloWorld'
+      },
+      {
+        path: '/puzzlecards',
+        component: 'puzzlecards'
+      },
+      {
+        path: '/dashboard',
+        routes: [
+          { path: '/dashboard/analysis', component: 'Dashboard/Analysis' },
+          { path: '/dashboard/monitor', component: 'Dashboard/Monitor' },
+          { path: '/dashboard/workplace', component: 'Dashboard/Workplace' }
+        ]
+      },
+    ]
+  }],
 };
