@@ -18,8 +18,8 @@ export default {
     reducers: {
       addNewCard(state, { payload: newCard }) {
         const nextCounter = state.counter + 1;
-        const newCardWithID = { ...newCard, id: nextCounter };
-        const nextData = state.data.concat(newCardWithID);
+        const newCardWithId = { ...newCard, id: nextCounter };
+        const nextData = state.data.concat(newCardWithId);
         return {
           data: nextData,
           counter: nextCounter,

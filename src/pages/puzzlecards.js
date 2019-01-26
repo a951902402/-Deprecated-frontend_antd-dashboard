@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'antd';
+import { Card,  Button } from 'antd';
 import { connect } from 'dva';
 
 const namespace = 'puzzlecards';
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onClickAdd: (newCard) => {
       const action = {
-        type: '${namespace}/addNewCard',
+        type: `${namespace}/addNewCard`,
         payload: newCard,
       };
       dispatch(action);
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-@connect(mapStateToProps,mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class PuzzleCardsPage extends Component {
 
   /*   addNewCard = () => {
@@ -56,12 +56,12 @@ export default class PuzzleCardsPage extends Component {
             );
           })
         }
-        {<div>
+        <div>
           <Button onClick={() => this.props.onClickAdd({
             question: 'Speak Italiano？',
             answer: 'Hey!It\'s me,Mario!',
           })}>Add Card</Button>
-        </div>}
+        </div>
       </div>
     );
   }
