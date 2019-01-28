@@ -26,6 +26,14 @@ export default {
         component: 'puzzlecards'
       },
       {
+        path: '/test',
+        component: 'test'
+      },
+      {
+        path: '/i18n',
+        component: 'i18n.example'
+      },
+      {
         path: '/dashboard',
         routes: [
           { path: '/dashboard/analysis', component: 'Dashboard/Analysis' },

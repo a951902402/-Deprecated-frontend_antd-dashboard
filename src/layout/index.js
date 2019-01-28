@@ -1,42 +1,45 @@
 import { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import Link from 'umi/link';
+import { Layout, Icon } from 'antd';
+import Logo from '../pages/layouts/logo';
+import MenuList from '../pages/layouts/menu';
 // Header, Footer, Sider, Content组件在Layout组件模块下
 const { Header, Footer, Sider, Content } = Layout;
-// 引入菜单组件
-const SubMenu = Menu.SubMenu;
 
 class BasicLayout extends Component {
+  state = {
+    collapsed: false,
+    mode: 'inline'
+  };
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
+
   render() {
     return (
       <Layout>
-        <Sider width={256} style={{ minHeight: '100vh' }}>
-          <div style={{ height: '32px', background: 'rgba(255,255,255,.2)', margin: '16px' }} />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Link to="/helloworld">
-                <Icon type="pie-chart" />
-                <span>Helloworld</span>
-              </Link>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={<span><Icon type="dashboard" /><span>Dashboard</span></span>}
-            >
-              <Menu.Item key="2"><Link to="/dashboard/analysis">Analysis Page</Link></Menu.Item>
-              <Menu.Item key="3"><Link to="/dashboard/monitor">Monitor Page</Link></Menu.Item>
-              <Menu.Item key="4"><Link to="/dashboard/workplace">Workplace Page</Link></Menu.Item>
-            </SubMenu>
-            <Menu.Item key="5">
-              <Link to="/puzzlecards">
-                <Icon type="read" />
-                <span>puzzlecards</span>
-              </Link>
-            </Menu.Item>
-          </Menu>
+        <Sider
+          width={256}
+          style={{ minHeight: '100vh' }}
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+        >
+          <Logo />
+          <MenuList />
         </Sider>
         <Layout >
-          <Header style={{ background: '#fff', textAlign: 'center', padding: 0 }}>Header</Header>
+          <Header style={{ background: '#fff', padding: 0 }}>
+            <span style={{ paddingLeft: '2%', fontSize: '1.4em'}}>
+              <Icon 
+                onClick= {this.toggle}
+                type={this.state.collapsed? 'menu-unfold': 'menu-fold'}
+                style={{cursor:'pointer'}}
+              />
+            </span>
+          </Header>
           <Content style={{ margin: '24px 16px 0' }}>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               {this.props.children}
