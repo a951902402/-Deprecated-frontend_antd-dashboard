@@ -30,10 +30,6 @@ export default {
         component: 'test'
       },
       {
-        path: '/setstate',
-        component: 'setstate'
-      },
-      {
         path: '/i18n',
         component: 'i18n.example'
       },

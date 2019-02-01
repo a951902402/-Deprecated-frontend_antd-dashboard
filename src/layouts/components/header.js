@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 };
 
 class Header extends Component {
+
   render() {
     const { dispatch } = this.props
     const onCollapseChange = () => {
