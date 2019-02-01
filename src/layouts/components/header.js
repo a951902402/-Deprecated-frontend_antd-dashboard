@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { Layout, Icon, } from 'antd';
 import { connect } from 'dva';
-
+//Define Dva connect namespace
 const namespace = 'header';
+//Define variable collapsed
+let collapsed;
 
-let collapsed = false;
+const mapStateToProps = (state) => {
+  const collapsed = state[namespace].collapsed;
+  return {
+    collapsed,
+  };
+};
 
 class Header extends Component {
   render() {
-    const { dispatch, state } = this.props
-    const CollapseChange = (state) => {
-      const collapsed = state[namespace].collapsed;
-      return {
-        collapsed,
-      };
-    }
+    const { dispatch } = this.props
     const onCollapseChange = () => {
       dispatch({
         type: `${namespace}/onCollapseChange`,
@@ -22,6 +23,8 @@ class Header extends Component {
           collapsed: !collapsed,
         }
       })
+      //Save current collapse state
+      collapsed = !collapsed
     }
 
     return (
@@ -40,4 +43,4 @@ class Header extends Component {
   }
 }
 
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);
