@@ -7,7 +7,7 @@ export default {
   ],
   routes: [{
     path: '/',
-    component: '../layout',
+    component: '../layouts',
     routes: [
       {
         path: '/card',
@@ -28,6 +28,10 @@ export default {
       {
         path: '/test',
         component: 'test'
+      },
+      {
+        path: '/setstate',
+        component: 'setstate'
       },
       {
         path: '/i18n',

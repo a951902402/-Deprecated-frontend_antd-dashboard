@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-plugin-import": "^1.11.0",
     "umi": "^2.4.3",
     "umi-plugin-react": "^1.4.1"
   },
