@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import { Layout, Icon } from 'antd';
+import { Layout } from 'antd';
 import Sider from './components/sider';
 import Header from './components/header';
+import Footer from './components/footer';
 // Header, Footer, Sider, Content组件在Layout组件模块下
-const { Footer, Content } = Layout;
+const { Content } = Layout;
 
 class BasicLayout extends Component {
   render() {
@@ -17,7 +18,7 @@ class BasicLayout extends Component {
               {this.props.children}
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer />
         </Layout>
       </Layout>
     )

@@ -29,6 +29,7 @@ class Sider extends Component {
         trigger={null}
         collapsible
         collapsed={collapsed}
+        theme="dark"
       >
         <div className={styles.brand}>
           <div className={styles.logo}>

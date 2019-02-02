@@ -2,11 +2,17 @@ export default {
   plugins: [
     ['umi-plugin-react', {
       antd: true,
-      dva: true
+      dva: true,
+      title: {
+        defaultTitle: 'Dashboard',
+        //format: '{current}{separator}{parent}',
+        separator: ' | '
+      }
     }],
   ],
   routes: [{
     path: '/',
+    title: 'Dashboard',
     component: '../layouts',
     routes: [
       {
@@ -19,10 +25,12 @@ export default {
       },
       {
         path: '/helloworld',
+        title: 'HelloWorld',
         component: 'HelloWorld'
       },
       {
         path: '/puzzlecards',
+        title: 'Puzzlecards',
         component: 'puzzlecards'
       },
       {

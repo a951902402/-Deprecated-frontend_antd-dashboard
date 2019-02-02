@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Layout, Icon, } from 'antd';
+import { Layout, Icon } from 'antd';
 import { connect } from 'dva';
+import styles from './header.less';
 //Define Dva connect namespace
 const namespace = 'header';
 //Define variable collapsed
@@ -29,14 +30,14 @@ class Header extends Component {
     }
 
     return (
-      <Layout.Header style={{ background: '#fff', padding: 0 }} >
+      <Layout.Header className={styles.header} >
         <span
-          style={{ paddingLeft: '2%', fontSize: '1.4em' }}
+          className={styles.menufold}
           onClick={onCollapseChange}
         >
           <Icon
             type={collapsed ? 'menu-unfold' : 'menu-fold'}
-            style={{ cursor: 'pointer' }}
+            className={styles.icon}
           />
         </span>
       </Layout.Header>
