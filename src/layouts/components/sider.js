@@ -29,7 +29,7 @@ class Sider extends Component {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        theme="dark"
+        theme="light"
       >
         <div className={styles.brand}>
           <div className={styles.logo}>
@@ -37,7 +37,7 @@ class Sider extends Component {
             {collapsed ? null : <h1>React</h1>}
           </div>
         </div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+        <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Link to="/helloworld">
               <Icon type="pie-chart" />
