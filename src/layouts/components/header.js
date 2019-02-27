@@ -25,13 +25,13 @@ class Header extends Component {
           collapsed: !collapsed,
         }
       })
-      //Save current collapse state
+      //Save collapse state current js
       collapsed = !collapsed
     }
 
     return (
       <Layout.Header className={styles.header} >
-        <span
+        <div
           className={styles.menufold}
           onClick={onCollapseChange}
         >
@@ -39,7 +39,10 @@ class Header extends Component {
             type={collapsed ? 'menu-unfold' : 'menu-fold'}
             className={styles.icon}
           />
-        </span>
+        </div>
+        <div className={styles.rightContainer}>
+          I'm right.
+        </div>
       </Layout.Header>
     )
   }

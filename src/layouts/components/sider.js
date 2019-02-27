@@ -7,6 +7,9 @@ import { connect } from 'dva';
 // 引入菜单组件
 const SubMenu = Menu.SubMenu;
 
+//Define variable collapsed
+let collapsed;
+
 const namespace = 'header';
 
 const mapStateToProps = (state) => {
@@ -19,16 +22,31 @@ const mapStateToProps = (state) => {
 class Sider extends Component {
   render() {
     const {
-      collapsed,
+      dispatch,
+      isMobile,
     } = this.props
+
+    const onCollapseChange = () => {
+      dispatch({
+        type: `${namespace}/onCollapseChange`,
+        payload: {
+          collapsed: !collapsed,
+        }
+      })
+      //Save collapse state current js
+      collapsed = !collapsed
+    }
 
     return (
       <Layout.Sider
+        className={styles.sider}
         width={256}
-        style={{ minHeight: '100vh' }}
+        breakpoint="lg"
+        //collapsedWidth="0"
         trigger={null}
         collapsible
         collapsed={collapsed}
+        onBreakpoint={onCollapseChange}
         theme="light"
       >
         <div className={styles.brand}>
