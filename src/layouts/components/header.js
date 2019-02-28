@@ -4,6 +4,7 @@ import { connect } from 'dva';
 import styles from './header.less';
 //Define Dva connect namespace
 const namespace = 'header';
+/*
 //Define variable collapsed
 let collapsed;
 
@@ -13,27 +14,28 @@ const mapStateToProps = (state) => {
     collapsed,
   };
 };
+*/
 
 class Header extends Component {
+  onCollapseChange = collapsed => {
+    const { dispatch } = this.props
+    dispatch({
+      type: `${namespace}/onCollapseChange`,
+      payload: collapsed,
+    })
+    /* 
+    //Save collapse state current js
+    collapsed = !collapsed
+     */
+  }
 
   render() {
-    const { dispatch } = this.props
-    const onCollapseChange = () => {
-      dispatch({
-        type: `${namespace}/onCollapseChange`,
-        payload: {
-          collapsed: !collapsed,
-        }
-      })
-      //Save collapse state current js
-      collapsed = !collapsed
-    }
-
+    const { collapsed } = this.props
     return (
       <Layout.Header className={styles.header} >
         <div
           className={styles.menufold}
-          onClick={onCollapseChange}
+          onClick={() => this.onCollapseChange(!collapsed)}
         >
           <Icon
             type={collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -48,4 +50,6 @@ class Header extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(({header}) => ({
+  collapsed: header.collapsed,
+}))(Header);

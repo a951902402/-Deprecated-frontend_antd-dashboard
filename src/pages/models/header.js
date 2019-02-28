@@ -7,7 +7,7 @@ export default {
     onCollapseChange(state, { payload }) {
       return {
         ...state,
-        ...payload,
+        collapsed: payload,
       }
     },
   },

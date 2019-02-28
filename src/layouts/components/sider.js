@@ -6,11 +6,11 @@ import styles from './sider.less';
 import { connect } from 'dva';
 // 引入菜单组件
 const SubMenu = Menu.SubMenu;
-
+//Define Dva connect namespace
+const namespace = 'header';
+/*
 //Define variable collapsed
 let collapsed;
-
-const namespace = 'header';
 
 const mapStateToProps = (state) => {
   const collapsed = state[namespace].collapsed;
@@ -18,25 +18,24 @@ const mapStateToProps = (state) => {
     collapsed,
   };
 };
+*/
 
 class Sider extends Component {
+
+  onCollapseChange = collapsed => {
+    const { dispatch } = this.props
+    dispatch({
+      type: `${namespace}/onCollapseChange`,
+      payload: collapsed,
+    })
+    /* 
+    //Save collapse state current js
+    collapsed = !collapsed
+     */
+  }
+
   render() {
-    const {
-      dispatch,
-      isMobile,
-    } = this.props
-
-    const onCollapseChange = () => {
-      dispatch({
-        type: `${namespace}/onCollapseChange`,
-        payload: {
-          collapsed: !collapsed,
-        }
-      })
-      //Save collapse state current js
-      collapsed = !collapsed
-    }
-
+    const { collapsed } = this.props
     return (
       <Layout.Sider
         className={styles.sider}
@@ -46,7 +45,7 @@ class Sider extends Component {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        onBreakpoint={onCollapseChange}
+        onBreakpoint={this.onCollapseChange}
         theme="light"
       >
         <div className={styles.brand}>
@@ -82,4 +81,6 @@ class Sider extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Sider)
+export default connect(({header}) => ({
+  collapsed: header.collapsed,
+}))(Sider)
