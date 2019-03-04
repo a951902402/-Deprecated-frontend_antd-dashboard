@@ -50,6 +50,6 @@ class Header extends Component {
   }
 }
 
-export default connect(({header}) => ({
+export default connect(({ header }) => ({
   collapsed: header.collapsed,
 }))(Header);

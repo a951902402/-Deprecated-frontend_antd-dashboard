@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import Link from 'umi/link';
-import LogoImg from '../../../public/logo.svg';
+import Logo from './logo';
 import styles from './sider.less';
 import { connect } from 'dva';
 // 引入菜单组件
@@ -48,12 +48,7 @@ class Sider extends Component {
         onBreakpoint={this.onCollapseChange}
         theme="light"
       >
-        <div className={styles.brand}>
-          <div className={styles.logo}>
-            <img alt="logo" src={LogoImg} />
-            {collapsed ? null : <h1>React</h1>}
-          </div>
-        </div>
+        <Logo collapsed={collapsed} />
         <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Link to="/helloworld">
@@ -81,6 +76,6 @@ class Sider extends Component {
   }
 }
 
-export default connect(({header}) => ({
+export default connect(({ header }) => ({
   collapsed: header.collapsed,
 }))(Sider)
