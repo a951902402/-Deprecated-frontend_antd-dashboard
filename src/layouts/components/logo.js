@@ -1,18 +1,17 @@
-import React from 'react';
-import LogoImg from '../../../public/logo.svg';
-import styles from './logo.less';
+import React, { PureComponent, Fragment } from 'react';
+import LogoImg from '../../../public/Logo.svg';
+import styles from './Logo.less';
 
-const Logo = (props) => {
-  const { collapsed } = props
-  return (
-    <div className={styles.brand}>
-      <div className={styles.logo}>
-        <img alt="logo" src={LogoImg} />
-        {collapsed ? null : <h1>React</h1>}
-      </div>
-    </div>
-  )
+export default class Logo extends PureComponent {
+  render() {
+    const { collapsed } = this.props
+    return (
+      <Fragment>
+        <div className={styles.logo}>
+          <img alt="logo" src={LogoImg} />
+          {collapsed ? null : <h1>React</h1>}
+        </div>
+      </Fragment>
+    )
+  }
 }
-
-
-export default Logo

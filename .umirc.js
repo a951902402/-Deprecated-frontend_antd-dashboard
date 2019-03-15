@@ -10,6 +10,7 @@ export default {
       }
     }],
   ],
+  /*
   routes: [{
     path: '/',
     title: 'Dashboard',
@@ -24,7 +25,7 @@ export default {
         component: 'HelloWorld'
       },
       {
-        path: '/helloworld',
+        path: '/HelloWorld',
         title: 'HelloWorld',
         component: 'HelloWorld'
       },
@@ -51,4 +52,5 @@ export default {
       },
     ]
   }],
+  */
 };

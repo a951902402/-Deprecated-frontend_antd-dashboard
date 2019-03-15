@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import Link from 'umi/link';
-import Logo from './logo';
-import styles from './sider.less';
+import Logo from './Logo';
+import styles from './Sider.less';
 import { connect } from 'dva';
 // 引入菜单组件
 const SubMenu = Menu.SubMenu;

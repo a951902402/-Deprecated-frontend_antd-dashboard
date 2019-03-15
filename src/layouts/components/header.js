@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Icon } from 'antd';
 import { connect } from 'dva';
-import styles from './header.less';
+import styles from './Header.less';
 //Define Dva connect namespace
 const namespace = 'header';
 /*
