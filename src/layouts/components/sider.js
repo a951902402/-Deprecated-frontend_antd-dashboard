@@ -53,7 +53,7 @@ class Sider extends Component {
           <Menu.Item key="1">
             <Link to="/HelloWorld">
               <Icon type="pie-chart" />
-              <span>Helloworld</span>
+              <span>Hello</span>
             </Link>
           </Menu.Item>
           <SubMenu
@@ -67,7 +67,7 @@ class Sider extends Component {
           <Menu.Item key="5">
             <Link to="/Puzzlecards">
               <Icon type="read" />
-              <span>puzzlecards</span>
+              <span>Users Information</span>
             </Link>
           </Menu.Item>
         </Menu>
