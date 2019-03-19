@@ -30,12 +30,18 @@ class Header extends Component {
   }
 
   render() {
-    const { collapsed } = this.props
+    const { collapsed, collapseState } = this.props
     return (
-      <Layout.Header className={styles.header} >
+      <Layout.Header
+        className={
+          collapsed ? `${styles.header} ${styles.headerfold}` : styles.header
+        }
+      >
         <div
           className={styles.menufold}
-          onClick={() => this.onCollapseChange(!collapsed)}
+          onClick={() => {
+            this.onCollapseChange(!collapsed);
+          }}
         >
           <Icon
             type={collapsed ? 'menu-unfold' : 'menu-fold'}

@@ -1,26 +1,14 @@
-import {
-  HashRouter as Route, Switch, Link, withRouter,
-} from 'react-router-dom';
-import { Breadcrumb, Alert } from 'antd';
+import { /*HashRouter as Router, Route, Switch, */Link, withRouter } from 'react-router-dom';
+import { Breadcrumb, Badge, Icon } from 'antd';
 import styles from './Breadcrumbs.less';
 
-const Apps = () => (
-  <ul className={styles.appList}>
-    <li>
-      <Link to="/HelloWorld/1">Application1</Link>：<Link to="/HelloWorld/1/detail">Detail</Link>
-    </li>
-    <li>
-      <Link to="/HelloWorld/2">Application2</Link>：<Link to="/HelloWorld/2/detail">Detail</Link>
-    </li>
-  </ul>
-);
-
 const breadcrumbNameMap = {
-  '/HelloWorld': 'Application List',
-  '/HelloWorld/1': 'Application1',
-  '/HelloWorld/2': 'Application2',
-  '/HelloWorld/1/detail': 'Detail',
-  '/HelloWorld/2/detail': 'Detail',
+  '/HelloWorld': 'HelloWorld',
+  '/Dashboard': 'Dashboard',
+  '/Dashboard/Analysis': 'Analysis',
+  '/Dashboard/Monitor': 'Monitor',
+  '/Dashboard/Workplace': 'Workplace',
+  '/Puzzlecards': 'Puzzlecards',
 };
 const Breadcrumbs = withRouter((props) => {
   const { location } = props;
@@ -29,33 +17,34 @@ const Breadcrumbs = withRouter((props) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
     return (
       <Breadcrumb.Item key={url}>
-        <Link to={url}>
-          {breadcrumbNameMap[url]}
-        </Link>
+        {pathSnippets.length - 1 === index ? (
+          <Badge status="processing" text={_} />
+        ) : (
+            <Link to={url}>
+              {breadcrumbNameMap[url]}
+            </Link>
+          )}
       </Breadcrumb.Item>
-    );
+    )
   });
-  const breadcrumbItems = [(
+
+  const breadcrumbItems = extraBreadcrumbItems.length === 0 ? [
+    <Breadcrumb.Item key="Home">
+      <Badge status="processing" text="Home" />
+    </Breadcrumb.Item>
+  ] : [(
     <Breadcrumb.Item key="home">
       <Link to="/">Home</Link>
     </Breadcrumb.Item>
   )].concat(extraBreadcrumbItems);
+
   return (
-    <div className={styles.demo}>
-      <div className={styles.demoNav}>
-        <Link to="/">Home</Link>
-        <Link to="/HelloWorld">Application List</Link>
-      </div>
-      <Switch>
-        <Route path="/HelloWorld" component={Apps} />
-        <Route render={() => <span>Home Page</span>} />
-      </Switch>
-      <Alert style={{ margin: '16px 0' }} message="Click the navigation above to switch:" />
-      <Breadcrumb>
+    <div className={styles.Breadcrumbs}>
+      <Breadcrumb separator={<Icon type="double-right" />}>
         {breadcrumbItems}
       </Breadcrumb>
     </div>
-  );
+  )
 });
 
 export default Breadcrumbs

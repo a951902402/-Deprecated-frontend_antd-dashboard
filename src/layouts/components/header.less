@@ -1,18 +1,27 @@
 .header {
   background-color: white;
-  padding: 0;
-  position: relative;
   display: flex;
   justify-content: space-between; //collapse图标与header区域对称放置
   align-items: center;
+  box-shadow: darkgray 0 0 10px 0;
+  width: 100%;
+  position: fixed;
+  z-index: 9;
+  padding: 0;
+  padding-left: 256px;
   .menufold {
-    padding-left: 2%;
+    padding: 0 2%;
     font-size: 1.4em;
-    .icon {
-      cursor: pointer;
+    cursor: pointer;
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
     }
   }
   .rightContainer {
     padding-right: 2%;
   }
+}
+.headerfold {
+  padding-left: 80px;
+  transition: padding-left 0.2s;
 }

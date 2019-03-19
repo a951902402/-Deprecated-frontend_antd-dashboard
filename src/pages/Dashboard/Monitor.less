@@ -1,0 +1,39 @@
+.selectorbox {
+  padding-left: 12px;
+  padding-right: 12px;
+  background: white;
+  background-clip: content-box;
+  position: relative;
+  &:hover {
+    box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
+  }
+}
+.colbox {
+  box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
+  margin-bottom: 24px;
+}
+.collapse {
+  position: absolute;
+  border: 2px;
+  background: lightcyan;
+  height: 48px;
+  width: 48px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  i {
+    background: #1890FF;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+.collapsed {
+  margin: 0;
+  z-index: 3;
+}
