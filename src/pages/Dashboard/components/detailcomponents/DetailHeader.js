@@ -4,15 +4,17 @@ import styles from './DetailHeader.less';
 
 class DetailHeader extends PureComponent {
   render() {
+    const { listData, listDataID } = this.props
+    const devData = listData[listDataID]
     return (
       <div className={styles.headerbox}>
         <div className={styles.headeritem}>
-          <Icon type="windows" theme="filled" style={{ fontSize: 80 }} />
+          <Icon type={devData.platform} theme="filled" style={{ fontSize: 80 }} />
         </div>
         <div className={styles.headeritem}>
-          <p style={{ fontSize: 20, fontWeight: 700 }}>Device - 0</p>
-          <p>Device from server room</p>
-          <p>6 days, 3 hours, 43 minutes</p>
+          <p style={{ fontSize: 20, fontWeight: 700 }}>{devData.title}</p>
+          <p>{devData.platform}</p>
+          <p>{devData.content}</p>
         </div>
       </div>
     )

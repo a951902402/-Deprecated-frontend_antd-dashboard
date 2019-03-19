@@ -30,7 +30,7 @@ class Header extends Component {
   }
 
   render() {
-    const { collapsed, collapseState } = this.props
+    const { collapsed } = this.props
     return (
       <Layout.Header
         className={

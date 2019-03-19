@@ -1,20 +1,21 @@
 import { List, Avatar, Icon } from 'antd';
 import React, { PureComponent } from 'react';
+import { connect } from 'dva';
 import styles from './DevList.less';
 
-const listData = [];
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    //href: 'http://ant.design',
-    title: `Device - ${i}`,
-    Icon: 'desktop',
-    description: 'Device from server room',
-    content: '6 days, 3 hours, 43 minutes',
-  });
-}
+const namespace = "devList"
 
 class DevList extends PureComponent {
+  onSelectItem = listDataID => {
+    const { dispatch } = this.props
+    dispatch({
+      type: `${namespace}/onSelectItem`,
+      payload: listDataID,
+    })
+  }
   render() {
+    const { listData, listDataID } = this.props
+    console.log(listDataID)
     return (
       <List
         itemLayout="vertical"
@@ -25,21 +26,21 @@ class DevList extends PureComponent {
             console.log(page);
           },
           pageSize: 5,
-          hideOnSinglePage: true,
           position: 'top',
         }}
         dataSource={listData}
         renderItem={item => (
           <List.Item
             key={item.title}
+            id={item.id}
             extra={<Icon type="right" />}
-            onClick={() => console.log(`${item.title} has been chosen`)}
+            onClick={() => this.onSelectItem(item.id)}
             className={styles.listItem}
           >
             <List.Item.Meta
-              avatar={<Avatar style={{ backgroundColor: 'lightgrey' }} shape="square" size={64} icon="windows" />}
+              avatar={<Avatar style={{ backgroundColor: 'lightgrey' }} shape="square" size={64} icon="desktop" />}
               title={item.title}
-              description={item.description}
+              description={item.platform}
             />
             {item.content}
           </List.Item>
@@ -49,4 +50,7 @@ class DevList extends PureComponent {
   }
 }
 
-export default DevList
+export default connect(({ devList }) => ({
+  listData: devList.listData,
+  listDataID: devList.listDataID,
+}))(DevList)
