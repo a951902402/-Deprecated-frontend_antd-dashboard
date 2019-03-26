@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Select } from 'antd';
+import { connect } from 'dva';
 import styles from './Selector.less';
 
 const Option = Select.Option
@@ -25,4 +26,7 @@ class Selector extends PureComponent {
   }
 }
 
-export default Selector
+export default connect(({devList}) => ({
+  listData: devList.listData,
+  listDataID: devList.listDataID
+}))(Selector)
