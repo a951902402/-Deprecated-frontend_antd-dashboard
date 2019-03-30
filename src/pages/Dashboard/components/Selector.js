@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { Select, Col } from 'antd';
 import { connect } from 'dva';
 import styles from './Selector.less';
@@ -16,7 +16,7 @@ class Selector extends PureComponent {
         )
       })
       return (
-        <Col  key={item} lg={6} md={12} className={styles.colbox}>
+        <Col key={item} lg={6} md={12} className={styles.colbox}>
           <p className={styles.selectorBanner} key={`p${item}`}>{options.name}</p>
           <Select style={{ width: 160 }} defaultValue={options.data[0]} key={`select${item}`}>
             {selectorOption}
@@ -25,9 +25,9 @@ class Selector extends PureComponent {
       )
     })
     return (
-      <div className={styles.selectorbox}>
+      <Fragment>
         {wholeSelector}
-      </div>
+      </Fragment>
     )
   }
 }
