@@ -9,37 +9,6 @@ import styles from './Monitor.less';
 
 let localCounter = 0
 
-const selectormap = [
-  {
-    "Platform": [
-      { "0": "All Platform" },
-      { "1": "Windows" },
-      { "2": "Linux" },
-      { "3": "Cisco" },
-      { "4": "Huawei" },
-      { "5": "H3C" },
-      { "6": "Other" },
-    ]
-  },
-  {
-    "Tag": [
-      { "0": "All Tag" },
-      { "1": "DESKTOP" },
-      { "2": "Linux" },
-      { "3": "Router" },
-      { "4": "Firewall" },
-    ]
-  },
-  {
-    "Important": [
-      { "0": "All Level" },
-      { "1": "Not Important" },
-      { "2": "Important" },
-      { "3": "Very Important" },
-    ]
-  },
-]
-
 class Monitor extends Component {
   state = {
     show: true
@@ -50,14 +19,6 @@ class Monitor extends Component {
     })
   }
   render() {
-    const selectors = selectormap.map((item, key) => {
-      const itemKey = Object.keys(item)
-      return (
-        <Col key={key} lg={6} md={12} className={styles.colbox}>
-          <Selector selectMapName={itemKey} selectMap={item[itemKey]} />
-        </Col>
-      )
-    })
     return (
       <Fragment>
         <Row gutter={24}>
@@ -65,7 +26,7 @@ class Monitor extends Component {
             {this.state.show ? [
               <Col lg={24} key={`Motion${++localCounter}`} className={styles.colbox}>
                 <Row gutter={24} className={styles.selectorbox}>
-                  {selectors}
+                  <Selector />
                   <div className={styles.collapse} onClick={this.toggle}>
                     <Icon type="double-right" />
                   </div>

@@ -10,7 +10,7 @@ class TestMyself extends Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:80/antd-dashboard/index.php')
+    axios.get('http://localhost:80/antd-dashboard/test.php')
       .then(response => {
         this.setState({
           devices: response.data,
