@@ -1,4 +1,6 @@
-// Monitor.js
+/**
+ * title: Monitor
+ */
 import React, { Component, Fragment } from 'react';
 import { Row, Col, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';

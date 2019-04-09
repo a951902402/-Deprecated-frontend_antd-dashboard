@@ -16,7 +16,7 @@ class Selector extends PureComponent {
         )
       })
       return (
-        <Col key={item} lg={6} md={12} className={styles.colbox}>
+        <Col key={item} xl={6} md={12} className={styles.colbox}>
           <p className={styles.selectorBanner} key={`p${item}`}>{options.name}</p>
           <Select style={{ width: 160 }} defaultValue={options.data[0]} key={`select${item}`}>
             {selectorOption}
@@ -27,6 +27,9 @@ class Selector extends PureComponent {
     return (
       <Fragment>
         {wholeSelector}
+        <Col xl={6} lg={24}>
+          <p className={styles.selectorBanner}></p>
+        </Col>
       </Fragment>
     )
   }

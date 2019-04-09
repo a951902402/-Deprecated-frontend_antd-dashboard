@@ -1,3 +1,6 @@
+/**
+ * title: i18n
+ */
 import { Component } from 'react';
 import {
   LocaleProvider, Pagination, DatePicker, TimePicker, Calendar,

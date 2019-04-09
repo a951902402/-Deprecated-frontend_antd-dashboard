@@ -1,3 +1,6 @@
+/**
+ * title: Puzzlecards
+ */
 import React, { Component } from 'react';
 import { Card,  Button } from 'antd';
 import { connect } from 'dva';

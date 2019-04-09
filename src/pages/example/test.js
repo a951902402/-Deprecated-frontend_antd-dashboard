@@ -1,3 +1,6 @@
+/**
+ * title: test
+ */
 function* _testYieldExpression(){
     let value = '';
     value = yield 'yield value';

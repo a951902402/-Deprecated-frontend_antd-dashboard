@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 class BasicLayout extends PureComponent {
   render() {
-    const content =this.props.children
+    const content = this.props.children
     return (
       <Layout>
         <Sider />
