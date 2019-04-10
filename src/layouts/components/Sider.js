@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import Link from 'umi/link';
+import { Layout } from 'antd';
+import Menulist from './Menu';
 import Logo from './Logo';
 import styles from './Sider.less';
 import { connect } from 'dva';
-// 引入菜单组件
-const SubMenu = Menu.SubMenu;
 //Define Dva connect namespace
 const namespace = 'header';
-/*
-//Define variable collapsed
-let collapsed;
-
-const mapStateToProps = (state) => {
-  const collapsed = state[namespace].collapsed;
-  return {
-    collapsed,
-  };
-};
-*/
 
 class Sider extends Component {
 
@@ -28,10 +15,6 @@ class Sider extends Component {
       type: `${namespace}/onCollapseChange`,
       payload: collapsed,
     })
-    /* 
-    //Save collapse state current js
-    collapsed = !collapsed
-     */
   }
 
   render() {
@@ -49,28 +32,7 @@ class Sider extends Component {
         theme="light"
       >
         <Logo collapsed={collapsed} />
-        <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1">
-            <Link to="/HelloWorld">
-              <Icon type="pie-chart" />
-              <span>Hello</span>
-            </Link>
-          </Menu.Item>
-          <SubMenu
-            key="sub1"
-            title={<span><Icon type="dashboard" /><span>Dashboard</span></span>}
-          >
-            <Menu.Item key="2"><Link to="/Dashboard/Analysis">Analysis Page</Link></Menu.Item>
-            <Menu.Item key="3"><Link to="/Dashboard/Monitor">Monitor Page</Link></Menu.Item>
-            <Menu.Item key="4"><Link to="/Dashboard/Workplace">Workplace Page</Link></Menu.Item>
-          </SubMenu>
-          <Menu.Item key="5">
-            <Link to="/Puzzlecards">
-              <Icon type="read" />
-              <span>Users Information</span>
-            </Link>
-          </Menu.Item>
-        </Menu>
+        <Menulist />
       </Layout.Sider>
     );
   }

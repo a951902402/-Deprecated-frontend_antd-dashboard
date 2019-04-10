@@ -4,17 +4,6 @@ import { connect } from 'dva';
 import styles from './Header.less';
 //Define Dva connect namespace
 const namespace = 'header';
-/*
-//Define variable collapsed
-let collapsed;
-
-const mapStateToProps = (state) => {
-  const collapsed = state[namespace].collapsed;
-  return {
-    collapsed,
-  };
-};
-*/
 
 class Header extends Component {
   onCollapseChange = collapsed => {
@@ -23,10 +12,6 @@ class Header extends Component {
       type: `${namespace}/onCollapseChange`,
       payload: collapsed,
     })
-    /* 
-    //Save collapse state current js
-    collapsed = !collapsed
-     */
   }
 
   render() {

@@ -1,40 +1,35 @@
-import { /*HashRouter as Router, Route, Switch, */Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Breadcrumb, Badge, Icon } from 'antd';
+import { connect } from 'dva';
 import styles from './Breadcrumbs.less';
 
-const breadcrumbNameMap = {
-  '/HelloWorld': 'HelloWorld',
-  '/Dashboard': 'Dashboard',
-  '/Dashboard/Analysis': 'Analysis',
-  '/Dashboard/Monitor': 'Monitor',
-  '/Dashboard/Workplace': 'Workplace',
-  '/Puzzlecards': 'Puzzlecards',
-};
 const Breadcrumbs = withRouter((props) => {
-  const { location } = props;
-  const pathSnippets = location.pathname.split('/').filter(i => i);
+  const { location, routes } = props
+  const pathSnippets = location.pathname.split('/').filter(i => i)
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {
-    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
+    const urlForlabel = url.toLowerCase()
+    const label = routes[urlForlabel] ? routes[urlForlabel] : _
     return (
       <Breadcrumb.Item key={url}>
         {pathSnippets.length - 1 === index ? (
-          <Badge status="processing" text={_} />
+          <Badge status="processing" text={label} />
         ) : (
             <Link to={url}>
-              {breadcrumbNameMap[url]}
+              {label}
             </Link>
           )}
       </Breadcrumb.Item>
     )
-  });
+  })
 
   const breadcrumbItems = extraBreadcrumbItems.length === 0 ? [
     <Breadcrumb.Item key="Home">
-      <Badge status="processing" text="Home" />
+      <Badge status="processing" text="首页" />
     </Breadcrumb.Item>
   ] : [(
     <Breadcrumb.Item key="home">
-      <Link to="/">Home</Link>
+      <Link to="/">首页</Link>
     </Breadcrumb.Item>
   )].concat(extraBreadcrumbItems);
 
@@ -47,4 +42,7 @@ const Breadcrumbs = withRouter((props) => {
   )
 });
 
-export default Breadcrumbs
+//umi中在layout components中使用dva-connect需withRouter高阶
+export default withRouter(connect(({ urlRouter }) => ({
+  routes: urlRouter.routes,
+}))(Breadcrumbs))
