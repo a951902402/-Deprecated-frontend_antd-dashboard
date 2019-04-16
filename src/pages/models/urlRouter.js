@@ -5,8 +5,7 @@ export default {
       '/': '首页',
       '/dashboard': '仪表盘',
       '/dashboard/monitor': '监控页',
-      '/dashboard/analysis': '分析页',
-      '/dashboard/workplace': '工作台',
+      '/dashboard/newdevice': '添加新设备',
       '/example': '测试样例',
       '/example/helloworld': '第一个页面',
       '/example/card': '卡片',
@@ -29,8 +28,7 @@ export default {
         icon: 'dashboard',
         children : {
           '/dashboard/monitor': '监控页',
-          '/dashboard/analysis': '分析页',
-          '/dashboard/workplace': '工作台',
+          '/dashboard/newdevice': '添加新设备',
         },
       },
       {

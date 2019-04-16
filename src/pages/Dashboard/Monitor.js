@@ -1,5 +1,5 @@
 /**
- * title: Monitor
+ * title: 监控页
  */
 import React, { Component, Fragment } from 'react';
 import { Row, Col, Icon } from 'antd';

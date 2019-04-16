@@ -1,7 +1,8 @@
 /**
  * title: Dashboard
  */
+import Redirect from 'umi/redirect';
+
 export default () => 
-  <div>
-    <h1>HomePage Here.</h1>
-  </div>
+/*     <h1>HomePage Here.</h1> */
+    <Redirect to='/Dashboard/Monitor' />
