@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import axios from 'axios';
-import { Steps, Button, message, notification, Input, Row, Col } from 'antd';
+import { Button, message, notification, Input, Row, Col } from 'antd';
 import styles from './NewdeviceStep1.less';
 
 const namespace = 'newdevice'

@@ -37,7 +37,7 @@ export default {
         ...state,
         step1: {
           ...state.step1,
-          button: payload,
+          forward: payload,
         },
       }
     },
