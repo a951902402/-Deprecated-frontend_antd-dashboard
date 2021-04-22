@@ -1,2 +1,2 @@
 # frontend_antd-dashboard
-frontend_antd-dashboard based on Ant Design in React.
+Frontend for frontend_antd-dashboard based on Ant Design using React.
